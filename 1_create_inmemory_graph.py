@@ -4,7 +4,7 @@ import bz2
 from graph_tool.all import *
 
 parser = argparse.ArgumentParser(description='Transform a Wikidata JSON Dump to a GraphTool Binary Graph.')
-parser.add_argument('--dump', '-d', default="wikidata-20180813-all.json.bz2", help='the wikidata dump to load (wikidata-*-all.json.bz2)')
+parser.add_argument('--dump', '-d', default="data/wikidata-20180813-all.json.bz2", help='the wikidata dump to load (wikidata-*-all.json.bz2)')
 args = parser.parse_args()
 
 wikidataFile = args.dump

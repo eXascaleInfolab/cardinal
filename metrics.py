@@ -1,4 +1,3 @@
-
 def error(estimates, Truth):
     #remove infinite values
     estimates = list(filter(lambda x: x != float('Inf'), estimates))

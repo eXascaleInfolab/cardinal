@@ -11,8 +11,8 @@ logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 #parse the input
 parser = argparse.ArgumentParser(description='Run the estimators on observations.')
-parser.add_argument('--infile', '-g', default="data/mentions.pickle", help='the observations to load')
-parser.add_argument('--outfile', '-eo', default="data/estimations.pickle", help='the estimations outfile')
+parser.add_argument('--infile', '-g', default="data/observations_wikidatawiki-20181001-pages.pickle", help='the observations to load')
+parser.add_argument('--outfile', '-eo', default="data/estimates_wikidatawiki-20181001-pages.pickle", help='the estimations outfile')
 
 args = parser.parse_args()
 
@@ -36,8 +36,8 @@ def estimateMonth(data, window_length=30):
     for idx, chunk in enumerate(chunks):
         est = Estimate(chunk)
         ff = Counter(Counter(unravel(chunk)).values())  
-        yield (idx, *est.chao_estimates(), *est.chao_estimatesNew(), *est.jack_estimates(), len(set(unravel(chunk))), ff[1])
-
+        yield (idx, *est.chao_estimates(), *est.sor_estimates(), *est.jack_estimates(), len(set(unravel(chunk))), ff[1])                
+        
 logging.info( "load observations: " + args.infile )
 observations = pickle.load( open( args.infile , "rb" ) )
 

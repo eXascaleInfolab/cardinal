@@ -21,11 +21,11 @@ class Estimate:
             return [self.distinct,self.distinct,self.distinct]
         
         turing_est = 1        
-        
-        turing_est = 1 - ( float(self.ff[1]) / float(self.S) )    
 
-        #clamp while sufficient sample number is reached
-        turing_est = min(1, turing_est + max(self.distinct / (self.S - self.ff[1]) - 1, 0))
+        if 1 in self.ff:
+            turing_est = 1 - ( float(self.ff[1]) / float(self.S) )    
+            #clamp while sufficient sample number is reached
+            turing_est = min(1, turing_est + max(self.distinct / (self.S - self.ff[1]) - 1, 0))
 
         N1 = self.distinct / turing_est
 
@@ -35,16 +35,14 @@ class Estimate:
                 tmp += i * (i-1) * self.ff[i]
                 
         cv_est = max(0.0, ((N1 * tmp) / float(self.S * (self.S-1))) - 1)
-        cv_2 = max(0.0, cv_est * ( 1+ ((self.S * (1-turing_est) * tmp) / float(self.S * (self.S-1) * turing_est)) ) )
         
         N2 = N1  + ( self.S * ( (1 - turing_est) / turing_est ) * cv_est )
-        N3 = N1  + ( self.S * ( (1 - turing_est) / turing_est ) * cv_2 )
-        # N1-UNIF, Chao92, Chao3
-        return [N1, N2, N3]
+        # N1-UNIF, Chao92
+        return [N1, N2]
 
     
     #Singleton Outlier Detection 
-    def chao_estimatesNew(self):  
+    def sor_estimates(self):  
         if 1 in self.ff and self.ff[1] == self.S:
             distinct = len(set(self.samples))
             return [self.distinct,self.distinct,self.distinct]
@@ -68,12 +66,10 @@ class Estimate:
                 tmp += i * (i-1) * self.ff[i]
                 
         cv_est = max(0.0, ((N1 * tmp) / float(self.S * (self.S-1))) - 1)
-        cv_2 = max(0.0, cv_est * ( 1+ ((self.S * (1-turing_est) * tmp) / float(self.S * (self.S-1) * turing_est)) ) )
         
         N2 = N1  + ( self.S * ( (1 - turing_est) / turing_est ) * cv_est )
-        N3 = N1  + ( self.S * ( (1 - turing_est) / turing_est ) * cv_2 )
-        #chao1sig, chao2sig, chao3sig
-        return [N1, N2, N3]
+        #SOR 
+        return [N2]
     
     def jack_estimates(self, order = 1):
         J1 = len(self.observed) + \

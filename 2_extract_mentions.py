@@ -12,8 +12,8 @@ logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 #parse the input
 parser = argparse.ArgumentParser(description='Extract all mentions x which belong to a class. Where x ==property?==> y and y ==instanceOf==> class.')
 parser.add_argument('--ingraph', '-g', default="data/wikidata-20180813-all.json.bz2.universe.noattr.gt.bz2", help='the graph to load')
-parser.add_argument('--infile', '-i', default="data/edits.csv", help='the observations from wikidata dump')
-parser.add_argument('--outfile', '-o', default="data/mentions.pickle", help='the outfile')
+parser.add_argument('--infile', '-i', default="data/edits_wikidatawiki-20181001-pages.csv", help='the extracted edits from wikidata dump')
+parser.add_argument('--outfile', '-o', default="data/observations_wikidatawiki-20181001-pages.pickle", help='the outfile')
 
 args = parser.parse_args()
 

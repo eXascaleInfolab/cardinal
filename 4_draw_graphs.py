@@ -23,15 +23,15 @@ logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 #parse the input
 parser = argparse.ArgumentParser(description='Run the estimators on observations.')
-parser.add_argument('--infile', '-f', default="data/estimations.pickle", help='the estimations to load')
-parser.add_argument('--outpath', '-o', default="data/", help='the outpath of the graphics')
-parser.add_argument('--ingraph', '-g', default="data/wikidata-20180813-all.json.bz2.universe.noattr.gt.bz2", help='the graph to load')
-parser.add_argument('--results', '-r', default="data/results.pickle", help='all results')
+parser.add_argument('--infile', '-f', default="data/estimates_wikidatawiki-20181001-pages.pickle", help='the estimations to load')
+parser.add_argument('--outpath', '-o', default="docs/", help='the outpath of the graphics')
+parser.add_argument('--ingraph', '-g', default="data/wikidata-20180813-all.json.bz2.universe.noattr.gt.bz2", help='the graph to load (only necessary for nice labels)')
+parser.add_argument('--results', '-r', default="data/results_wikidatawiki-20181001-pages.pickle", help='all results')
 
 args = parser.parse_args()
 
 def plot(df, title, ax, idx):
-    lines = ['N1‒UNIF','Chao92','Jack1','Chao2sig','Distinct']
+    lines = ['N1‒UNIF','Chao92','Jack1','SOR','Distinct']
 
     ax.set_title(title + '\n')    
 
@@ -87,7 +87,16 @@ if args.ingraph != '':
 
 logging.info( "loading estimates: " + args.infile )
 estimates = pickle.load( open( args.infile , "rb" ) )
-html = '<html><head><title>Non-Parametric Class Completeness Estimatorsfor Collaborative Knowledge Graphs</title><link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></head><body><div class="container"><h1>Non-Parametric Class Completeness Estimatorsfor Collaborative Knowledge Graphs</h1><h2>Results</h2>\n'
+html = '''
+<html>
+    <head>
+        <title>Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs - The Case of Wikidata</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs - The Case of Wikidata</h1>
+            <h2>Results</h2>'''
 
 for estimate in sorted(estimates):
     try:
@@ -95,7 +104,7 @@ for estimate in sorted(estimates):
         if universe:
             name = universe.vp.label[q2v[estimate]]
 
-        dfEstimate = pd.DataFrame(estimates[estimate], columns=['month','N1‒UNIF','Chao92','Chao3','Chao1sig','Chao2sig','Chao3sig','Jack1','Jack2','Distinct','$f_1$'])
+        dfEstimate = pd.DataFrame(estimates[estimate], columns=['month','N1‒UNIF','Chao92','SOR','Jack1','Jack2','Distinct','$f_1$'])
         f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=[8, 4])
 
         result = plot(dfEstimate, name + " (Q" + str(estimate) + ")", ax1, 0)
@@ -105,9 +114,13 @@ for estimate in sorted(estimates):
         logging.info( "saved " + str(estimate) + '.pdf' )
         plt.close()
 
-        html = html + '\n<h2>Q'+str(estimate)+': '+name+'</h3>\n'
+        html = html + '''
+            <h2>Q'+str(estimate)+': '+name+'</h2>
+'''
         html = html + result.to_html()
-        html = html + '\n<img src="figures/'+str(estimate)+'.png">'
+        html = html + '''
+            <img src="figures/'+str(estimate)+'.png">
+'''
 
         try:
             results = results.append(result)
@@ -119,6 +132,10 @@ for estimate in sorted(estimates):
 
 pickle.dump( results, open( args.results, "wb" ) )
 
-html = html + '\n</div></body></html>'
-with open(args.outpath + "results.html", "w") as file:
+html = html + '''
+        </div>
+    </body>
+</html>'''
+
+with open(args.outpath + "estimates.html", "w") as file:
     file.write(html)
