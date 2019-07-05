@@ -1,13 +1,12 @@
 import matplotlib;
 matplotlib.use('pdf')
 import matplotlib.pyplot as plt;
-from graph_tool.all import *
 import pickle
 import os
 import logging
 import argparse
-from datetime import datetime
-from itertools import groupby
+#from datetime import datetime
+#from itertools import groupby
 from collections import Counter
 
 import pandas as pd;
@@ -15,9 +14,9 @@ import seaborn as sns;
 import numpy as np
 from mpl_toolkits.axes_grid.inset_locator import inset_axes
 
-
 from estimators import Estimate, unravel
 from metrics import conv
+from graph_tool.all import *
 
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
@@ -104,6 +103,7 @@ for estimate in sorted(estimates):
         if universe:
             name = universe.vp.label[q2v[estimate]]
 
+        print("estimate", estimates[estimate])
         dfEstimate = pd.DataFrame(estimates[estimate], columns=['month','N1‒UNIF','Chao92','SOR','Jack1','Jack2','Distinct','$f_1$'])
         f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=[8, 4])
 

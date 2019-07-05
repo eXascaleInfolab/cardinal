@@ -18,7 +18,7 @@ class Estimate:
     #Chao based 
     def chao_estimates(self):
         if 1 in self.ff and self.ff[1] == self.S:
-            return [self.distinct,self.distinct,self.distinct]
+            return [self.distinct,self.distinct]
         
         turing_est = 1        
 
@@ -45,7 +45,7 @@ class Estimate:
     def sor_estimates(self):  
         if 1 in self.ff and self.ff[1] == self.S:
             distinct = len(set(self.samples))
-            return [self.distinct,self.distinct,self.distinct]
+            return [self.distinct]
         turing_est = 1
 
         ff_ = copy.deepcopy(self.ff)

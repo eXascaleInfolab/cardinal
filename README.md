@@ -1,10 +1,9 @@
 # Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs
 
-## Results
+## Pre-Requisites
 
-[result.html](results.html)
-
-For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed in [result.html](results.html). Additionally we also provide the results in a CSV [result.csv](results.csv) (tab separated, utf-8).
+* Necessary python requirements: `pip install -r requirements.txt`
+* graph-tool [Website](https://graph-tool.skewed.de/), [Installation intructions](https://git.skewed.de/count0/graph-tool/wikis/installation-instructions)
 
 ## Data Pipeline
 
@@ -27,3 +26,11 @@ After the XML Dump of Wikidata is loaded in a SQL Database (with e.g. [MWDumper]
 ##Estimator and Metrics
 
 The estimators and metrics can be found as independent methods, ready to use in [estimators.py](estimators.py) and [metrics.py](metrics.py) respectively.
+
+## Results
+
+[result.html](results.html)
+
+For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed in [result.html](results.html). Additionally we also provide the results in a CSV [result.csv](results.csv) (tab separated, utf-8).
+
+

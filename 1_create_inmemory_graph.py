@@ -25,7 +25,6 @@ def createGraph(amount = 30):
 
     item = universe.new_vertex_property("bool") #type True=>item, False=>property
     q = universe.new_vertex_property("int") #items
-    attributes = universe.new_vertex_property("object") #attributes
     label = universe.new_vertex_property("string") #labels
     aliases = universe.new_vertex_property("vector<string>") #aliases
     sitelinks = universe.new_vertex_property("int") #sitelinks
@@ -79,7 +78,6 @@ def createGraph(amount = 30):
                                     else:
                                         attr.append(s['mainsnak'])
 
-                attributes[n] = attr
 
                 # label
                 if 'labels' in i:
@@ -117,7 +115,6 @@ def createGraph(amount = 30):
 
     universe.vertex_properties["item"] = item
     universe.vertex_properties["q"] = q
-    universe.vertex_properties["attributes"] = attributes
     universe.vertex_properties["sitelinks"] = sitelinks
     universe.vertex_properties["enwiki"] = enwiki
     universe.vertex_properties["aliases"] = aliases
@@ -126,8 +123,5 @@ def createGraph(amount = 30):
     return universe
 
 universe = createGraph(1e+100)
-universe.save(universeFile)
-print("Graph saved:", universeFile)
-del universe.vertex_properties["attributes"]
 universe.save(universeNoattrFile)
 print("Graph saved:", universeNoattrFile)

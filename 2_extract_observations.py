@@ -1,4 +1,3 @@
-from graph_tool.all import *
 import pickle;
 from collections import defaultdict
 import pandas as pd;
@@ -6,6 +5,7 @@ import argparse
 import bz2
 import logging
 from datetime import datetime
+from graph_tool.all import *
 
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 

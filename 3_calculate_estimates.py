@@ -21,7 +21,6 @@ def dateConverter(x):
         return x
     else:
         return datetime.strptime(str(x), '%Y%m%d%H%M%S')
-
     
 minDate = dateConverter(20130101000000)
 def estimateMonth(data, window_length=30):
