@@ -17,7 +17,8 @@ Additionaly we provide every intermediary step as a download.
 
 ### 1. Export Edits from Edit History
 
-[0_export_edits.sql](0_export_edits.sql)
+* [0_export_edits.sql](0_export_edits.sql)
+
     1. Load the XML Dump of Wikidata in a SQL Database (with e.g. [MWDumper](https://www.mediawiki.org/wiki/Manual:MWDumper)).
     2. The provided query exports all edits. (The query can be restricted to edits before the timestamp "2018-10-01" to recreate the output presented in the paper.) 
 
