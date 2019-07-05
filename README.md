@@ -38,8 +38,8 @@ The estimators and metrics are available at [estimators.py](estimators.py) and [
 
 ## Results
 
-[cardinal.exascale.info](cardinal.exascale.info)
+[cardinal.exascale.info](https://cardinal.exascale.info)
 
-For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed on [cardinal.exascale.info](cardinal.exascale.info). 
+For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed on [cardinal.exascale.info](https://cardinal.exascale.info). 
 
 Additionally we also provide the results as CSV [result.csv](results.csv) (tab separated, utf-8) file.
