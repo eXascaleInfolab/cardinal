@@ -94,8 +94,11 @@ html = '''
     </head>
     <body>
         <div class="container">
-            <h1>Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs - The Case of Wikidata</h1>
-            <h2>Results</h2>'''
+            <h1>Cardinal</h1>
+            <p>This is the companian material for the Paper "Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs - The Case of Wikidata".</p>
+            <p>Below you find for all classes with at least 5000 observations the convergence metric and their respective estimator graph. (Please refer to the paper for a detailed description of the graph.)</p>
+            <p>Please find the code and additional datasets on <a href="https://github.com/eXascaleInfolab/cardinal/">GitHub</a>.</p>
+            <h2 a="results">Results</h2>'''
 
 for estimate in sorted(estimates):
     try:
@@ -103,7 +106,6 @@ for estimate in sorted(estimates):
         if universe:
             name = universe.vp.label[q2v[estimate]]
 
-        print("estimate", estimates[estimate])
         dfEstimate = pd.DataFrame(estimates[estimate], columns=['month','N1‒UNIF','Chao92','SOR','Jack1','Jack2','Distinct','$f_1$'])
         f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=[8, 4])
 
@@ -115,11 +117,11 @@ for estimate in sorted(estimates):
         plt.close()
 
         html = html + '''
-            <h2>Q'+str(estimate)+': '+name+'</h2>
+            <h2>Q'''+str(estimate)+''': '''+name+'''</h2><br>
 '''
         html = html + result.to_html()
         html = html + '''
-            <img src="figures/'+str(estimate)+'.png">
+            <img src="figures/'''+str(estimate)+'''.png">
 '''
 
         try:
@@ -137,5 +139,5 @@ html = html + '''
     </body>
 </html>'''
 
-with open(args.outpath + "estimates.html", "w") as file:
+with open(args.outpath + "index.html", "w") as file:
     file.write(html)
