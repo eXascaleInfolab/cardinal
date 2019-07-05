@@ -8,12 +8,15 @@
 ## Data Pipeline
 
 ### Data Sources
-The following tasks are dependent on each other and can be run without any parameters, the default values expect the datasets to be present in the subfolder `/data`. The necessary origin datasets are not anymore available at the source:
+The following tasks are dependent on each other and can be run without any parameters, the default parameters expect the datasets to be present in the subfolder `/data`. The necessary origin datasets are not anymore available at the source:
 
 - Edit History: Any recent Version of `*-pages-meta-history1.xml` at https://dumps.wikimedia.org/wikidatawiki can be used. (see below) 
 - JSON Dump: https://zenodo.org/record/3268725 (accessed at https://dumps.wikimedia.org/wikidatawiki/entities/20180813)
 
-Additionaly we provide every intermediary step as a download.
+Additionaly we provide the data for every intermediary step to download:
+
+- 
+- 
 
 ### 1. Export Edits from Edit History
 
@@ -24,12 +27,12 @@ Additionaly we provide every intermediary step as a download.
 
 ### 2. Data Preparation
 
-* [1_create_inmemory_graph.py](1_create_inmemory_graph.py): Extract an inmemory representation of Wikidata.
-* [2_extract_observations.py](2_extract_observations.py): Extract the mentions from the edits with help of the InMemory Graph.
+* [1_create_inmemory_graph.py](1_create_inmemory_graph.py): Extract an in-memory representation of Wikidata.
+* [2_extract_observations.py](2_extract_observations.py): Extract the observations from the edits with help of the in-memory Graph.
 
 ### 3. Calculate Estimates and Convergence
 
-* [3_calculate_estimates.py](3_calculate_estimates.py): Calculate the Estimates of all Classes
+* [3_calculate_estimates.py](3_calculate_estimates.py): Calculate the Estimates of all Classes.
 * [4_draw_graphs.py](4_draw_graphs.py): Draw the graphs and calculate the Convergence for all Classes.
 
 ## Estimator and Metrics
