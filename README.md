@@ -13,7 +13,7 @@ The following tasks are dependent on each other and can be run without any param
 - Edit History: Any recent Version of `*-pages-meta-history1.xml` at https://dumps.wikimedia.org/wikidatawiki can be used. (see below) 
 - JSON Dump: https://zenodo.org/record/3268725 (accessed at https://dumps.wikimedia.org/wikidatawiki/entities/20180813)
 
-Additionaly we provide the data for every intermediary step as download.
+Additionaly we provide the data for every intermediary step as download at .
 
 ### 1. Export Edits from Edit History
 
@@ -40,6 +40,6 @@ The estimators and metrics are available at [estimators.py](estimators.py) and [
 
 [docs/index.html](docs/index.html)
 
-For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed in [docs/index.html](docs/index.html). Additionally we also provide the results as CSV [result.csv](results.csv) (tab separated, utf-8) file.
+For all classes with at least 5000 observations we calculated the convergence metric and draw the graph. Find all classes listed in [docs/index.html](docs/index.html). 
 
-
+Additionally we also provide the results as CSV [result.csv](results.csv) (tab separated, utf-8) file.
