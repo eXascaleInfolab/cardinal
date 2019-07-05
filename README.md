@@ -13,7 +13,7 @@ The following tasks are dependent on each other and can be run without any param
 - Edit History: Any recent Version of `*-pages-meta-history1.xml` at https://dumps.wikimedia.org/wikidatawiki can be used. (see below) 
 - JSON Dump: https://zenodo.org/record/3268725 (accessed at https://dumps.wikimedia.org/wikidatawiki/entities/20180813)
 
-Additionaly we provide the data for every intermediary step as download at .
+Additionaly we provide the data for every intermediary step as download at https://zenodo.org/record/3268818.
 
 ### 1. Export Edits from Edit History
 
