@@ -1,9 +1,14 @@
 # Non-Parametric Class Completeness Estimators for Collaborative Knowledge Graphs
 
-## Pre-Requisites
+## Requirements
+### Software 
 
 * Necessary Python requirements: `pip install -r requirements.txt`
 * [`graph-tool` Python Package](https://graph-tool.skewed.de/): This can not be installed through pip -> [Installation intructions](https://git.skewed.de/count0/graph-tool/wikis/installation-instructions)
+
+### System 
+
+For fast access on the Wikidata graph we create a binary representation for in-memory access in the observation extraction phase. The creation and the use of this graph can take easily up to **200GB of memory**.
 
 ## Data Pipeline
 
@@ -30,7 +35,7 @@ Additionaly we provide the data for every intermediary step as download at https
 ### 3. Calculate Estimates and Convergence
 
 * [3_calculate_estimates.py](3_calculate_estimates.py): Calculate the Estimates of all Classes.
-* [4_draw_graphs.py](4_draw_graphs.py): Draw the graphs and calculate the Convergence for all Classes.
+* [4_draw_graphs.py](4_draw_graphs.py): Draw the graphs and calculate the Convergence for all Classes. With `-g ""` no graph is loaded (which uses much less memory) 
 
 ## Estimator and Metrics
 
