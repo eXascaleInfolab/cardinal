@@ -24,7 +24,7 @@ Additionaly we provide the data for every intermediary step as download at https
 
 ### 2. Data Preparation
 
-* [1_create_inmemory_graph.py](1_create_inmemory_graph.py): Extract an in-memory representation of Wikidata.
+* [1_create_inmemory_graph.py](1_create_inmemory_graph.py): Extract an in-memory representation of Wikidata. This is a subset of our [wd-graph](https://github.com/eXascaleInfolab/wd-graph) project. The output of the wd-graph `create.py` can also be used.
 * [2_extract_observations.py](2_extract_observations.py): Extract the observations from the edits with help of the in-memory Graph.
 
 ### 3. Calculate Estimates and Convergence
