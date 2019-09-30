@@ -3,7 +3,7 @@
 ## Requirements
 ### Software 
 
-* Necessary Python requirements: `pip install -r requirements.txt`
+* Necessary Python requirements: `sudo pip3 install -r requirements.txt`
 * [`graph-tool` Python Package](https://graph-tool.skewed.de/): This can not be installed through pip -> [Installation intructions](https://git.skewed.de/count0/graph-tool/wikis/installation-instructions)
 
 ### System 

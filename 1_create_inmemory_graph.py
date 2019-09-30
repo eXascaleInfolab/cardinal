@@ -1,5 +1,5 @@
 import argparse
-import ijson.backends.yajl2_cffi as ijson
+import ijson
 import bz2
 from graph_tool.all import *
 
